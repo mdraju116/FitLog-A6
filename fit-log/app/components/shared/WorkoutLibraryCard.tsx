@@ -3,6 +3,7 @@ import type { WorkoutType } from "@/app/types/workoutType";
 import { GoFlame } from "react-icons/go";
 import { IoTimeOutline } from "react-icons/io5";
 import { MdOutlineStarRate } from "react-icons/md";
+import Link from "next/link";
 
 type WorkoutCardProps = {
     workout: WorkoutType;
@@ -10,7 +11,10 @@ type WorkoutCardProps = {
 
 const WorkoutCard = ({ workout }: WorkoutCardProps) => {
     return (
-        <div className="bg-[#111318] rounded-xl overflow-hidden shadow-md">
+        <div>
+        <Link href={`/workout-details/${workout.id}`} className="block" >
+
+        <div className="bg-[#111318] rounded-xl overflow-hidden shadow-md transition hover:-translate-y-1 hover:shadow-lg">
 
             {/* Image */}
             <Image
@@ -67,6 +71,9 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
                 </div>
             </div>
         </div>
+      </Link>
+    </div>
+       
     );
 };
 

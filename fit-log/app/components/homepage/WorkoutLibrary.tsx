@@ -21,11 +21,11 @@ const WorkoutLibrary = async () => {
     // console.log("workouts:",workouts);
 
     return (
-        <div className="container mx-auto px-26 space-y-2">
+        <div id="library" className="container mx-auto px-4 sm:px-16 lg:px-24 space-y-2">
             <h1 className="text-white text-4xl font-bold">THE LIBRARY</h1>
             <p className="text-[14px] font-normal text-[#9ca3af] mb-8">Twelve lifts covering every major muscle group.</p>
 
-            <div className="grid grid-cols-3 gap-3 space-y-2 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 space-y-2 ">
 
 
             {

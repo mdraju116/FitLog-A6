@@ -13,7 +13,7 @@ const Navbar = () => {
 
     return (
         <div className="bg-black shadow-md">
-            <div className="navbar container mx-auto px-4 sm:px-16 lg:px-26">
+            <div className="navbar container mx-auto px-4 sm:px-16 lg:px-24">
 
                 {/* Navbar Start */}
                 <div className="navbar-start">
@@ -74,14 +74,29 @@ const Navbar = () => {
                 {/* Plan + Saved */}
                 <div className="navbar-end">
                     <div className="flex items-center gap-3 sm:gap-4 lg:gap-5">
-                        <Link href="/myplan">Plan</Link>
-                        <Link href="/myplan">Saved</Link>
+
+                        {/* Plan */}
+                        <Link href="/myplan" className="text-sm font-medium text-white" >
+                            Plan
+                            <span className="ml-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#ccff00] text-xs text-black font-bold">
+                                3  {/* {planCount} */}
+                            </span>
+                        </Link>
+
+                        {/* Saved */}
+                        <Link href="/myplan" className="text-sm font-medium text-white" >
+                            Saved
+                            <span className="ml-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#4e5351] bg-black text-xs text-white font-bold">
+                                5  {/* {savedCount} */}
+                            </span>
+                        </Link>
+
                     </div>
                 </div>
 
             </div>
 
-            <hr  className="text-[#292b28]"/>
+            <hr className="text-[#292b28]" />
 
         </div>
     );
