@@ -1,7 +1,7 @@
 
 "use client"
 
-import { createContext, ReactNode, useState, useEffect, useRef } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
 import { WorkoutType } from "../types/workoutType";
 
 interface ContextProps {
@@ -52,7 +52,7 @@ const WorkoutProvider = ({ children }: { children: ReactNode }) => {
         return savedCompleted ? JSON.parse(savedCompleted) : [];
     });
 
-    
+
     // Save Today's Plan
     useEffect(() => {
         localStorage.setItem(
