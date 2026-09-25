@@ -1,13 +1,14 @@
 "use client";
 
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { WorkoutType } from "@/app/types/workoutType";
 
 import PlanStats from "./PlanStats";
 import PlanCard from "./PlanCard";
 import Link from "next/link";
+import { WorkoutContext } from "@/app/context/WorkoutContext";
 
 interface Props {
     addToPlan: WorkoutType[];
@@ -18,11 +19,12 @@ type SortOption = "Duration" | "Calories" | "Rating";
 
 const PlanTabs = ({ addToPlan, saveToLater }: Props) => {
 
+
     const searchParams = useSearchParams();
     const router = useRouter();
     const activeTab = searchParams.get("tab") === "saved" ? "saved" : "plan";
 
-
+    const { completedWorkouts } = useContext(WorkoutContext);
     const [sortBy, setSortBy] = useState<SortOption>("Duration");
 
     // Select workouts according to active tab
@@ -49,7 +51,10 @@ const PlanTabs = ({ addToPlan, saveToLater }: Props) => {
         <div>
 
             {/* Stats */}
-            <PlanStats workouts={currentWorkouts} />
+            <PlanStats
+                workouts={currentWorkouts}
+                completedWorkouts={completedWorkouts}
+            />
 
             {/* Tabs + Sorting */}
             <div className="mt-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -73,8 +78,8 @@ const PlanTabs = ({ addToPlan, saveToLater }: Props) => {
                         <button
                             onClick={() => router.push("/myplan?tab=saved")}
                             className={`rounded-xl px-4 py-2 text-sm font-medium cursor-pointer transition ${activeTab === "saved"
-                                    ? "bg-[#ccff00] text-black"
-                                    : "text-[#8a92a0] hover:text-white"
+                                ? "bg-[#ccff00] text-black"
+                                : "text-[#8a92a0] hover:text-white"
                                 }`}
                         >
                             Saved
@@ -112,6 +117,8 @@ const PlanTabs = ({ addToPlan, saveToLater }: Props) => {
                             <PlanCard
                                 key={workout.id}
                                 workout={workout}
+                                isPlan={activeTab === "plan"}
+
                             />
                         ))}
                     </div>

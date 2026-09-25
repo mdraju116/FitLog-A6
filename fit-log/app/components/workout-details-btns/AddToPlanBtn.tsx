@@ -13,9 +13,16 @@ interface Props {
 const AddToPlanBtn = ({ workout }: Props) => {
     const { addToPlan, setAddToPlan } = useContext(WorkoutContext);
 
-    const handleSetPlans = () => {
-        const alreadyAdded = addToPlan.find((item) => item.id === workout.id );
+    const planLimitReached = addToPlan.length >= 5;
 
+
+    const handleSetPlans = () => {
+        if (planLimitReached) {
+            toast.error("Today's plan is full. Remove a workout to add a new one.");
+            return;
+        }
+
+        const alreadyAdded = addToPlan.find((item) => item.id === workout.id);
         if (alreadyAdded) {
             toast.info(`"${workout.name}" is already in your today's plan.`);
             return;
@@ -23,7 +30,7 @@ const AddToPlanBtn = ({ workout }: Props) => {
 
         setAddToPlan([...addToPlan, workout]);
 
-        toast.success(` "${workout.name}" has been added to your today's plan.`);
+        toast.success(` "${workout.name}" has been added to today's plan.`);
 
         //  console.log("My Plan:", [...addToPlan, workout]);  //see the added item at the console after clicking the btn
     };
@@ -32,13 +39,19 @@ const AddToPlanBtn = ({ workout }: Props) => {
         <div>
             <button
                 onClick={handleSetPlans}
-                className="btn rounded-xl border-none bg-[#ccff00] text-black"
+                className={`btn rounded-xl border-none ${planLimitReached
+                    ? "cursor-not-allowed bg-[#2a2d34] text-[#8a92a0]"
+                    : "bg-[#ccff00] text-black"
+                    }`}
             >
                 <MdCheckBoxOutlineBlank />
-                Add to today&apos;s plan
+
+                {planLimitReached
+                    ? "Today's plan is full"
+                    : "Add to today's plan"}
             </button>
 
-            
+
         </div>
     );
 };

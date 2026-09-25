@@ -1,16 +1,21 @@
 import type { WorkoutType } from "@/app/types/workoutType";
 
 interface Props {
-  workouts: WorkoutType[];
+  workouts: WorkoutType[],
+  completedWorkouts: number[];
 }
 
-const PlanStats = ({ workouts }: Props) => {
-  const totalMinutes = workouts.reduce(
+const PlanStats = ({ workouts, completedWorkouts }: Props) => {
+  const activeWorkouts = workouts.filter(
+    (workout) => !completedWorkouts.includes(workout.id)
+  );
+
+  const totalMinutes = activeWorkouts.reduce(
     (total, workout) => total + workout.duration,
     0
   );
 
-  const totalCalories = workouts.reduce(
+  const totalCalories = activeWorkouts.reduce(
     (total, workout) => total + workout.caloriesBurned,
     0
   );
@@ -23,7 +28,7 @@ const PlanStats = ({ workouts }: Props) => {
         </p>
 
         <span className="text-4xl font-bold text-[#ccff00]">
-          {workouts.length}
+          {activeWorkouts.length}
         </span>
       </div>
 
