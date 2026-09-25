@@ -38,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </main>
           <Footer></Footer>
-          <ToastContainer />
+          <ToastContainer  autoClose={2000}/>
 
         </WorkoutProvider>
 
