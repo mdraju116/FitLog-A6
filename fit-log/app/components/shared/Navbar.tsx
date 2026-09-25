@@ -1,18 +1,40 @@
 
+"use client";
+
+import { usePathname, } from "next/navigation";
+import { useContext } from "react";
+import { WorkoutContext } from "@/app/context/WorkoutContext";
+
 import Link from "next/link";
 import logo from "@/assets/logo.png";
 import Image from "next/image";
 
 const Navbar = () => {
+    const pathname = usePathname();
+
     const links = (
         <>
-            <li>  <Link href="/">Workouts</Link></li>
-            <li> <Link href="/myplan">My Plan</Link> </li>
+            <Link href={pathname === "/" ? "#library" : "/"} className={`rounded-2xl px-3 py-2 text-sm font-medium transition ${pathname === "/"
+                ? "bg-[#c2f800]/10 text-[#c2f800]"
+                : "text-white hover:bg-[#c2f800]/10 hover:text-[#c2f800]"
+                }`}
+            > Workouts </Link>
+
+            <Link href="/myplan" className={`rounded-2xl px-3 py-2 text-sm font-medium transition  ${pathname === "/myplan"
+                ? "bg-[#c2f800]/10 text-[#c2f800]"
+                : "text-white hover:bg-[#c2f800]/10 hover:text-[#c2f800]"
+                }`}
+            >  My Plan </Link>
+
         </>
     );
 
+    const { addToPlan, saveToLater } = useContext(WorkoutContext);
+
+
+
     return (
-        <div className="bg-black shadow-md">
+        <div className="bg-black shadow-md sticky top-0 z-50 bg-[#111318]">
             <div className="navbar container mx-auto px-4 sm:px-16 lg:px-24">
 
                 {/* Navbar Start */}
@@ -51,22 +73,27 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    {/* Logo */}
-                    <Image
-                        src={logo}
-                        alt="Navbar Logo"
-                        className="rotate-90 w-7 h-7"
-                    />
+                    {/* Logo & Brand */}
+                    <Link
+                        href="/"
+                        className="flex items-center gap-2 rounded-lg px-2 py-1 text-lg font-bold text-white transition hover:bg-[#c2f800]/10 hover:text-[#c2f800] sm:text-xl"
+                    >
+                        {/* Logo */}
+                        <Image
+                            src={logo}
+                            alt="Navbar Logo"
+                            className="h-7 w-7 rotate-90"
+                        />
 
-                    {/* Brand */}
-                    <Link href="/" className="btn btn-ghost hover:bg-[#c2f800] hover:text-black text-lg sm:text-xl text-white" >
-                        FITLOG
+                        {/* Brand */}
+                        <span>FITLOG</span>
                     </Link>
+
                 </div>
 
                 {/* Tablet + Desktop Navigation */}
                 <div className="navbar-center hidden sm:flex">
-                    <ul className="menu menu-horizontal px-0 sm:gap-0 lg:gap-1">
+                    <ul className="menu menu-horizontal px-0 sm:gap-0 lg:gap-4">
                         {links}
                     </ul>
                 </div>
@@ -76,18 +103,24 @@ const Navbar = () => {
                     <div className="flex items-center gap-3 sm:gap-4 lg:gap-5">
 
                         {/* Plan */}
-                        <Link href="/myplan" className="text-sm font-medium text-white" >
+                        <Link
+                            href="/myplan"
+                            className="text-sm font-medium text-white hover:bg-[#c2f800]/10 hover:text-[#c2f800] rounded-2xl  px-3 py-2"
+                        >
                             Plan
-                            <span className="ml-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#ccff00] text-xs text-black font-bold">
-                                3  {/* {planCount} */}
+                            <span className="ml-1 inline-flex min-w-6 h-6 items-center justify-center rounded-full bg-[#ccff00] px-1 text-xs font-bold text-black">
+                                {addToPlan.length}
                             </span>
                         </Link>
 
                         {/* Saved */}
-                        <Link href="/myplan" className="text-sm font-medium text-white" >
+                        <Link
+                            href="/myplan?tab=saved"
+                            className="text-sm font-medium text-white hover:bg-[#c2f800]/10 hover:text-[#c2f800] rounded-2xl  px-3 py-2"
+                        >
                             Saved
-                            <span className="ml-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#4e5351] bg-black text-xs text-white font-bold">
-                                5  {/* {savedCount} */}
+                            <span className="ml-1 inline-flex min-w-6 h-6 items-center justify-center rounded-full border border-[#4e5351] bg-black px-1 text-xs font-bold text-white">
+                                {saveToLater.length}
                             </span>
                         </Link>
 

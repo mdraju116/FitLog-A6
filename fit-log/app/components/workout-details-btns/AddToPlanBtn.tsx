@@ -37,6 +37,8 @@ const AddToPlanBtn = ({ workout }: Props) => {
                 <MdCheckBoxOutlineBlank />
                 Add to today&apos;s plan
             </button>
+
+            
         </div>
     );
 };
