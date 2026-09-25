@@ -1,8 +1,10 @@
 
 import { WorkoutType } from "@/app/types/workoutType";
 import Image from "next/image";
-import { MdCheckBoxOutlineBlank } from "react-icons/md";
-import { FaRegBookmark } from "react-icons/fa6";
+
+
+import AddToPlanBtn from "@/app/components/workout-details-btns/AddToPlanBtn";
+import SaveForLaterBtn from "@/app/components/workout-details-btns/SaveForLaterBtn";
 
 
 const getWorkout = async (id: string): Promise<WorkoutType> => {
@@ -24,6 +26,8 @@ type Props = {
 };
 
 
+
+//Main Fuctions
 const SingleWorkoutDetails = async ({ params }: Props) => {
   const { workoutid } = await params;
 
@@ -149,17 +153,8 @@ const SingleWorkoutDetails = async ({ params }: Props) => {
 
           {/* Buttons */}
           <div className="mt-3 flex flex-col sm:flex-row gap-4">
-
-            <button className="btn  bg-[#ccff00] text-black border-none rounded-xl">
-              <MdCheckBoxOutlineBlank />
-              Add to today&apos;s plan
-            </button>
-
-            <button className="btn rounded-xl border border-[#323436] bg-[#15171a] text-white shadow-none hover:bg-[#15171a]">
-              <FaRegBookmark />
-              Save for later
-            </button>
-
+              <AddToPlanBtn workout={workout}/>
+              <SaveForLaterBtn workout={workout}/>
           </div>
 
         </div>
