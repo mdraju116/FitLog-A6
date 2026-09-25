@@ -15,7 +15,7 @@ const Footer = () => {
                      alt="Navbar Logo"
                      className="rotate-90 w-7 h-7"
                 />
-                <Link href="/" className="btn btn-ghost text-lg sm:text-xl text-white" >
+                <Link href="/" className="btn btn-ghost hover:bg-[#c2f800] hover:text-black text-lg sm:text-xl text-white" >
                         FITLOG
                </Link>
                </div>

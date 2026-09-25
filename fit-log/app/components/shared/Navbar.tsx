@@ -59,7 +59,7 @@ const Navbar = () => {
                     />
 
                     {/* Brand */}
-                    <Link href="/" className="btn btn-ghost text-lg sm:text-xl text-white" >
+                    <Link href="/" className="btn btn-ghost hover:bg-[#c2f800] hover:text-black text-lg sm:text-xl text-white" >
                         FITLOG
                     </Link>
                 </div>
