@@ -4,7 +4,8 @@ import { WorkoutType } from "@/app/types/workoutType";
 
 const getWorkouts = async ():Promise<WorkoutType[]> => {
     try {
-        const response = await fetch('https://api.abcz.workers.dev/api/fitlog');
+        const response = await fetch('https://api.api-store.workers.dev/api/fitlog');
+        // const response = await fetch('https://api.abcz.workers.dev/api/fitlog');
         const workouts = await response.json();
         return workouts;
     } catch (error) {

@@ -9,7 +9,8 @@ import SaveForLaterBtn from "@/app/components/workout-details-btns/SaveForLaterB
 
 const getWorkout = async (id: string): Promise<WorkoutType> => {
   try {
-    const response = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
+    const response = await fetch(`https://api.api-store.workers.dev/api/fitlog/${id}`);
+    // const response = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
     const workout = await response.json();
     return workout;
   } catch (error) {
