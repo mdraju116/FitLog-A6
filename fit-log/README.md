@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FitLog
 
-## Getting Started
+A modern and responsive workout tracking application built with Next.js and TypeScript. FitLog allows users to explore workouts, view detailed exercise information, create a personalized daily workout plan, save workouts for later, and track completed exercises.
 
-First, run the development server:
+## 🚀 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+👉 [FitLog Live Demo](https://fit-log-tau-seven.vercel.app/)
+
+## Technology Stack
+
+* Next.js
+* TypeScript
+* React
+* Tailwind CSS
+* daisyUI
+* React Icons
+* React Toastify
+* REST API
+* Local Storage
+
+## ✨ Key Features
+
+* **Explore Workouts** — Browse a collection of workouts with information such as muscle groups, equipment, difficulty, duration, calories, and ratings.
+* **Workout Details** — View detailed information and step-by-step instructions for each workout.
+* **Today's Plan** — Add up to five workouts to your daily workout plan.
+* **Save for Later** — Save workouts that you want to try later.
+* **Workout Statistics** — Track active exercises, total workout minutes, and estimated calories.
+* **Sorting** — Sort workouts by duration, calories, or rating.
+* **Persistent Data** — Workout plans, saved workouts, and completion status are preserved using browser local storage.
+* **Responsive Design** — Fully responsive layout that works across desktop, tablet, and mobile devices.
+
+
+## 📂 Project Structure
+
+```text
+FitLog/
+│
+├── public/
+│
+├── app/
+│   ├── components/
+│   │   ├── homepage/
+│   │   │   ├── Banner.tsx
+│   │   │   └── WorkoutLibrary.tsx
+│   │   │
+│   │   ├── myplanstats/
+│   │   │   ├── PlanCard.tsx
+│   │   │   ├── PlanStats.tsx
+│   │   │   └── PlanTabs.tsx
+│   │   │
+│   │   ├── shared/
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Navbar.tsx
+│   │   │   └── WorkoutLibraryCard.tsx
+│   │   │
+│   │   └── workout-details-btns/
+│   │       ├── AddToPlanBtn.tsx
+│   │       └── SaveForLaterBtn.tsx
+│   │
+│   ├── context/
+│   │   └── WorkoutContext.tsx
+│   │
+│   ├── workout-details/
+│   │   └── [workoutid]/
+│   │       └── page.tsx
+│   │
+│   ├── myplan/
+│   │   └── page.tsx
+│   │
+│   ├── types/
+│   │   └── workoutType.ts
+│   │
+│   ├── page.tsx
+│   ├── layout.tsx
+│   ├── loading.tsx
+│   ├── not-found.tsx
+│   └── globals.css
+│
+├── assets/
+│
+├── package.json
+├── tsconfig.json
+├── next.config.ts
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔗 API
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+FitLog uses a REST API to fetch workout information.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+https://api.abcz.workers.dev/api/fitlog
+```
 
-## Learn More
+Individual workout details are fetched using:
 
-To learn more about Next.js, take a look at the following resources:
+```text
+https://api.abcz.workers.dev/api/fitlog/{id}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 👨‍💻 Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Md. Raju Ahammed**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+GitHub: https://github.com/mdraju116
