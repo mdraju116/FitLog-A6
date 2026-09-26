@@ -4,7 +4,7 @@ A modern and responsive workout tracking application built with Next.js and Type
 
 ## 🚀 Live Demo
 
-👉 [FitLog Live Demo](https://fit-log-a6.vercel.app/)
+👉 [FitLog Live Demo](https://fit-log-tau-seven.vercel.app/)
 
 ## Technology Stack
 
