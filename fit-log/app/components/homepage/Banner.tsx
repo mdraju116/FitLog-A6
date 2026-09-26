@@ -18,13 +18,19 @@ const Banner = () => {
           {/* Hero Content */}
           <div className="space-y-4 text-center lg:text-left">
 
-             <h2 className="text-[#c2f800] text-base sm:text-xl font-medium">
+            <h2 className="text-[#c2f800] text-base sm:text-xl font-medium">
               WORKOUT LIBRARY
             </h2>
-         
 
-            <h1 className="text-3xl sm:text-4xl lg:text-4.5xl font-bold leading-tight">
+
+            {/* <h1 className="text-3xl sm:text-4xl lg:text-4.5xl font-bold leading-tight">
               TRAIN WITH INTENT. LOG <br /> EVERY SET.
+            </h1> */}
+
+            <h1 className="text-2xl font-bold leading-tight sm:text-3xl md:text-3.5x lg:text-4xl">
+              TRAIN WITH INTENT. LOG
+              <br className="hidden sm:block" />
+              {" "}EVERY SET.
             </h1>
 
             <p className="py-3 sm:py-4 text-[#9ca3af] text-base sm:text-[14px] lg:text-[16px] font-normal">
@@ -32,7 +38,7 @@ const Banner = () => {
               into today&apos;s plan, and watch the week&apos;s work add up.
             </p>
 
-            <button  className="btn bg-[#c2f800] text-black">
+            <button className="btn bg-[#c2f800] text-black">
               <a href="#library">BROWSE WORKOUTS</a>
             </button>
 

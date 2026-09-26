@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="bg-black shadow-md mt-10">
             <hr  className="text-[#292b28]"/>
 
-            <div className="container mx-auto px-4 sm:px-16 lg:px-26 flex justify-between items-center py-8">
+           <div className="container mx-auto flex flex-col items-center gap-4 px-4 py-8 sm:px-16 lg:flex-row lg:justify-between lg:px-24">
                <div className="flex items-center">
                  {/* Logo & Brand */}
                     <Link
