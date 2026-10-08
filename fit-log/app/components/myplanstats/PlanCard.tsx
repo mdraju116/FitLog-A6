@@ -19,7 +19,11 @@ interface Props {
 }
 
 const PlanCard = ({ workout, isPlan }: Props) => {
-  const { addToPlan, setAddToPlan, saveToLater, setSaveToLater, completedWorkouts, setCompletedWorkouts, }
+  //{ workout, isPlan } is received from planTabs working list
+  
+  const { addToPlan, setAddToPlan, 
+          saveToLater,  setSaveToLater, 
+          completedWorkouts, setCompletedWorkouts, }
     = useContext(WorkoutContext);
 
   const handleMarkAsDone = () => {
@@ -29,6 +33,7 @@ const PlanCard = ({ workout, isPlan }: Props) => {
     setCompletedWorkouts([...completedWorkouts, workout.id]);
     toast.success(`"${workout.name}" marked as done.`);
   };
+
   const isCompleted = completedWorkouts.includes(workout.id);
 
 
@@ -37,13 +42,11 @@ const PlanCard = ({ workout, isPlan }: Props) => {
       setAddToPlan(
         addToPlan.filter((item) => item.id !== workout.id)
       );
-
       toast.error(`"${workout.name}" removed from your plan.`);
     } else {
       setSaveToLater(
         saveToLater.filter((item) => item.id !== workout.id)
       );
-
       toast.error(`"${workout.name}" removed from saved.`);
     }
   };
@@ -101,11 +104,15 @@ const PlanCard = ({ workout, isPlan }: Props) => {
 
       {/* Right Side */}
       <div className="flex shrink-0 items-center gap-2">
+
+      {/* view details btn */}
         <Link
           href={`/workout-details/${workout.id}`}
           className="rounded-xl bg-[#191c22] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#222630]"
         >  View Details </Link>
 
+
+        {/* mark as done btn */}
         {isPlan && (
           <button
             onClick={handleMarkAsDone}
@@ -119,6 +126,8 @@ const PlanCard = ({ workout, isPlan }: Props) => {
           </button>
         )}
 
+
+        {/* remove btn */}
         <button
           onClick={handleRemove}
           className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#191c22] text-[#8a92a0] transition hover:bg-[#222630] hover:text-white"

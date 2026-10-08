@@ -6,6 +6,7 @@ const Banner = () => {
   return (
     <div className="container mx-auto px-4 sm:px-16 lg:px-24 my-6 sm:my-8 lg:my-10">
       <div className="hero bg-[#20252e] shadow-md py-4 sm:py-6 rounded-xl px-4 sm:px-6 lg:px-10">
+       
         <div className="hero-content flex-col justify-between lg:flex-row-reverse gap-8 lg:gap-12">
 
           {/* Hero Image */}
@@ -44,6 +45,7 @@ const Banner = () => {
 
           </div>
         </div>
+
       </div>
     </div>
   );

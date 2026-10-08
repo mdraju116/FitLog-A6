@@ -16,8 +16,9 @@ interface ContextProps {
 // export const WorkoutContext = createContext<any>(null);
 
 export const WorkoutContext = createContext<ContextProps>({
-    addToPlan: [],
-    setAddToPlan: () => { },
+    //initial values
+    addToPlan: [], //initially empty[]
+    setAddToPlan: () => { },  //placeholder function
     saveToLater: [],
     setSaveToLater: () => { },
     completedWorkouts: [],
@@ -27,16 +28,19 @@ export const WorkoutContext = createContext<ContextProps>({
 
 const WorkoutProvider = ({ children }: { children: ReactNode }) => {
 
-    //load data
+    //1.get data
+    //[addToPlan, setAddToPlan] used in - Navbar.tsx, myplan/page.tsx, AddToPlanBtn.tsx, PlanCard.tsx
     const [addToPlan, setAddToPlan] = useState<WorkoutType[]>(() => {
-        if (typeof window === "undefined") {
-            return [];
+        if (typeof window === "undefined") {   //check user on browser(window=object) or server(window=undefined)
+            return []; 
         }
         const savedPlan = localStorage.getItem("fitlog-plan");
         return savedPlan ? JSON.parse(savedPlan) : [];
     });
 
-    const [saveToLater, setSaveToLater] = useState<WorkoutType[]>(() => {
+
+    //[saveToLater, setSaveToLater] used in - myplan/page.tsx, SaveForLaterBtn.tsx, PlanCard.tsx
+    const [saveToLater, setSaveToLater] = useState<WorkoutType[]>(() => {     
         if (typeof window === "undefined") {
             return [];
         }
@@ -44,6 +48,8 @@ const WorkoutProvider = ({ children }: { children: ReactNode }) => {
         return savedLater ? JSON.parse(savedLater) : [];
     });
 
+
+    //[completedWorkouts, setCompletedWorkouts] used in - PlanTabs.tsx, PlanStats.tsx and PlanCard.tsx
     const [completedWorkouts, setCompletedWorkouts] = useState<number[]>(() => {
         if (typeof window === "undefined") {
             return [];
@@ -53,28 +59,17 @@ const WorkoutProvider = ({ children }: { children: ReactNode }) => {
     });
 
 
-    // Save Today's Plan
+    //2.Set data
     useEffect(() => {
-        localStorage.setItem(
-            "fitlog-plan",
-            JSON.stringify(addToPlan)
-        );
+        localStorage.setItem("fitlog-plan", JSON.stringify(addToPlan) );
     }, [addToPlan]);
 
-    // Save Saved Workouts
     useEffect(() => {
-        localStorage.setItem(
-            "fitlog-saved",
-            JSON.stringify(saveToLater)
-        );
+        localStorage.setItem( "fitlog-saved", JSON.stringify(saveToLater)  );
     }, [saveToLater]);
 
-    // Save Completed Workouts
     useEffect(() => {
-        localStorage.setItem(
-            "fitlog-completed",
-            JSON.stringify(completedWorkouts)
-        );
+        localStorage.setItem( "fitlog-completed", JSON.stringify(completedWorkouts) );
     }, [completedWorkouts]);
 
 

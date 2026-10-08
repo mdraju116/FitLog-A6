@@ -4,13 +4,14 @@
 import { usePathname, } from "next/navigation";
 import { useContext } from "react";
 import { WorkoutContext } from "@/app/context/WorkoutContext";
-
 import Link from "next/link";
 import logo from "@/assets/logo.png";
 import Image from "next/image";
 
+
 const Navbar = () => {
-    const pathname = usePathname();
+    const pathname = usePathname(); //to make the link active
+    const { addToPlan, saveToLater } = useContext(WorkoutContext); //to show the no of plan in the badge
 
     const links = (
         <>
@@ -29,7 +30,7 @@ const Navbar = () => {
         </>
     );
 
-    const { addToPlan, saveToLater } = useContext(WorkoutContext);
+    
 
 
 
@@ -91,6 +92,8 @@ const Navbar = () => {
 
                 </div>
 
+
+                {/*Navbar center */}
                 {/* Tablet + Desktop Navigation */}
                 <div className="navbar-center hidden sm:flex">
                     <ul className="menu menu-horizontal px-0 sm:gap-0 lg:gap-4">
@@ -98,6 +101,8 @@ const Navbar = () => {
                     </ul>
                 </div>
 
+
+                {/*Navbar end */}
                 {/* Plan + Saved */}
                 <div className="navbar-end">
                     <div className="flex items-center gap-3 sm:gap-4 lg:gap-5">

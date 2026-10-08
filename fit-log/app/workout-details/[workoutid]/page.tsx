@@ -30,9 +30,9 @@ type Props = {
 
 //Main Fuctions
 const SingleWorkoutDetails = async ({ params }: Props) => {
-  const { workoutid } = await params;
+  const { workoutid } = await params; //will work-1st, (get the id from url)
 
-  const workout = await getWorkout(workoutid);
+  const workout = await getWorkout(workoutid); //will work -2nd, (use the id from params)
 
 
 

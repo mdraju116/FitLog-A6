@@ -2,11 +2,10 @@
 
 import { useContext } from "react";
 import { WorkoutContext } from "@/app/context/WorkoutContext";
-
 import PlanTabs from "@/app/components/myplanstats/PlanTabs";
 
 const MyPlanPage = () => {
-  const { addToPlan, saveToLater } = useContext(WorkoutContext);
+  const { addToPlan, saveToLater } = useContext(WorkoutContext); //to send as props in PlanTabs
 
   return (
     <div className="container mx-auto my-8 px-4 sm:px-16 lg:px-24">

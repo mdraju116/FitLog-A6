@@ -6,6 +6,7 @@ interface Props {
 }
 
 const PlanStats = ({ workouts, completedWorkouts }: Props) => {
+  
   const activeWorkouts = workouts.filter(
     (workout) => !completedWorkouts.includes(workout.id)
   );

@@ -4,7 +4,6 @@
 import { useContext, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { WorkoutType } from "@/app/types/workoutType";
-
 import PlanStats from "./PlanStats";
 import PlanCard from "./PlanCard";
 import Link from "next/link";
@@ -18,19 +17,17 @@ interface Props {
 type SortOption = "Duration" | "Calories" | "Rating";
 
 const PlanTabs = ({ addToPlan, saveToLater }: Props) => {
+ 
+    const { completedWorkouts } = useContext(WorkoutContext); //to send as props in PlanStats
+    const router = useRouter(); //to check url for active badge
 
 
-    const searchParams = useSearchParams();
-    const router = useRouter();
+    const searchParams = useSearchParams(); //to get active tab
     const activeTab = searchParams.get("tab") === "saved" ? "saved" : "plan";
+    const currentWorkouts = activeTab === "plan" ? addToPlan : saveToLater;// Select workouts according to active tab
 
-    const { completedWorkouts } = useContext(WorkoutContext);
-    const [sortBy, setSortBy] = useState<SortOption>("Duration");
 
-    // Select workouts according to active tab
-    const currentWorkouts = activeTab === "plan" ? addToPlan : saveToLater;
-
-    // Sort workouts
+    const [sortBy, setSortBy] = useState<SortOption>("Duration"); //to sort items
     const sortedWorkouts = [...currentWorkouts].sort((a, b) => {
         if (sortBy === "Duration") {
             return b.duration - a.duration;
@@ -46,6 +43,9 @@ const PlanTabs = ({ addToPlan, saveToLater }: Props) => {
 
         return 0;
     });
+
+
+
 
     return (
         <div>
